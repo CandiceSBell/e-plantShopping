@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
 import addItem from 'CartSlice.jsx';
+import addItem from 'ProductList.jsx';
 
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
