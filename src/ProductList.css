@@ -40,6 +40,16 @@ body {
 }
 
 /* Product Grid */
+.category-title {
+    text-align: center;
+}
+
+hr {
+    max-width: 25%;
+    border: 1px solid #000;
+    margin: 1rem auto 0.5rem;
+}
+
 .product-grid {
     display:flex;
     flex-direction: column;
@@ -47,6 +57,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -149,8 +160,7 @@ body {
 .tag img {
     height: 70px;
     width: 70px;
-    border-radius: 70%;
-    
+    border-radius: 70%;    
 }
 
 .luxury {
@@ -159,41 +169,44 @@ body {
     justify-content: center;
     width: 650px;
     font-size: 19px;
+    gap: 1rem;
 }
+
 .cart{
     color: white;
     display: flex;
 }
+
 .cart_quantity_count{
     margin-top: 16px;
     /* background-color: red; */
     margin-left: 27px;
     position: absolute;
     font-size: 29px;
-
 }
+
 .plantname_heading{
    display: flex;
    align-items: center;
    justify-content: center;
     /* background-color: yellow; */
 }
+
 .plant_heading{
     width: 400px;
     text-align: center;
     margin: 20px;
     border: 1px solid rgb(5, 4, 4);
     border-left: none;
-    border-right: none;
-
-    
+    border-right: none;  
 }
+
 /* Add Media Query for responsiveness */
 @media (max-width: 768px) {
-    .product-card {
-        flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
-        max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
-    }
+  .product-card {
+    flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
+    max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
+  }
 }
 /* ProductList.css */
 
@@ -218,6 +231,13 @@ body {
   .product-button.added-to-cart {
     background-color: grey; /* Grey when product is added */
   }
+
+  .disabled {
+    background-color: #878787 !important;
+    cursor: not-allowed;
+    transition: 0.35s ease-in-out;
+  }
+
   @media (max-width: 1200px) {
     .product-card {
       flex: 1 1 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap on medium screens */

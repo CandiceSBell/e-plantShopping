@@ -9,11 +9,12 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
-    let totalCost =0;
+    let totalCartAmount =0;
     cart.forEach((item) => {
-            totalCost += (parseInt(item.cost.substring(1))) * item.quantity;
+        const itemCost = parseFloat(item.cost.replace('$', ''));
+        totalCartAmount += itemCost * item.quantity;
     });
-    return totalCost;
+    return totalCartAmount;
   };
 
   const handleContinueShopping = (e) => {
@@ -29,26 +30,27 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-    if(item.quantity > 1){
+    if(item.quantity > 1) {
         dispatch(updateQuantity({name: item.name, quantity:item.quantity - 1}));
-    }else{
-        handleRemove(item);
+    } else {
+        dispatch(removeItem({ name: item.name }));
     }   
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item.name));
+    dispatch(removeItem({ name: item.name }));
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    return Number(item.cost.substring(1)) * item.quantity;
+    const itemCost = parseFloat(item.cost.replace('$', ''));
+    return itemCost * item.quantity;
   };
 
   return (
     <div className="cart-container">
-      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
-      <div>
+      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount().toFixed(2)}</h2>
+      <div className="cart-items">
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
             <img className="cart-item-image" src={item.image} alt={item.name} />
@@ -60,7 +62,7 @@ const CartItem = ({ onContinueShopping }) => {
                 <span className="cart-item-quantity-value">{item.quantity}</span>
                 <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
               </div>
-              <div className="cart-item-total">Total: ${calculateTotalCost(item)}</div>
+              <div className="cart-item-total">Total: ${calculateTotalCost(item).toFixed(2)}</div>
               <button className="cart-item-delete" onClick={() => handleRemove(item)}>Delete</button>
             </div>
           </div>
