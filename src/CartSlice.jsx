@@ -15,13 +15,13 @@ export const CartSlice = createSlice({
         } else {
           state.items.push({ name, image, cost, quantity: 1 });
         }
-        state.totalQuantity = state.items.reduce((total, item) => total + item.quantity, 0);
+            state.totalQuantity = state.items.reduce((total, item) => total + item.quantity, 0);
     },
     
     removeItem: (state, action) => {
         const { name } = action.payload;
-        state.items = state.items.filter(item => item.name !== name);
-        state.totalQuantity = state.items.reduce((total, item) => total + item.quantity, 0);
+            state.items = state.items.filter(item => item.name !== name);
+            state.totalQuantity = state.items.reduce((total, item) => total + item.quantity, 0);
     },
 
     updateQuantity: (state, action) => {
